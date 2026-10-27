@@ -1,0 +1,25 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@12.15.0",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "test": "echo 'No tests yet'"
+  },
+  "devDependencies": {
+    "turbo": "^2.11.10"
+  },
+  "pnpm": {
+    "approvedBuilds": {
+      "unrs-resolver": "1.12.2"
+    }
+  },
+  "dependencies": {
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  }
+}
