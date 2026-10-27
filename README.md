@@ -68,3 +68,12 @@ The architecture utilizes a **Modular Monolith** pattern on the backend and a **
 - **Cross-Module Communication**: The backend enforces the `TenantAwareEntity` mapped superclass for strict tenant isolation. Modules communicate via UUIDs rather than direct JPA relations where crossing domain boundaries.
 - **Offline Reliability**: The `pos-terminal` app utilizes `dexie` and `dexie-react-hooks` to store orders locally in IndexedDB when internet connectivity drops, synchronizing them when connection is restored.
 - **Payment Extensibility**: The `PaymentGatewayPort` provides a clean Strategy pattern interface, allowing seamless addition of new payment providers without touching core POS logic.
+
+## Completion Status of Architecture Document Requirements
+* **Modular Monolith Setup**: Completed. Core modules isolated.
+* **Turborepo Frontend**: Completed. Includes `pos-terminal`, `super-admin`, `tenant-backoffice`, `ui`, and `calculation-engine`.
+* **Multi-Tenancy**: Completed. Implemented via Hibernate 6 `@TenantId` and custom `CurrentTenantIdentifierResolver`.
+* **Payment Strategy Pattern**: Completed. Added `PaymentGatewayPort`, `PaymentGatewayRegistry` and a dummy `StripePaymentAdapter`.
+* **Offline POS (IndexedDB)**: Completed. Used `dexie` and `dexie-react-hooks` in `pos-terminal` to queue offline orders.
+* **Calculation Engine**: Completed. Shared Typescript package utilizing `decimal.js` to ensure deterministic math.
+* **Transactional Outbox Eventing**: Simulated via Spring domain events on `Order` persisting to database (basic setup completed).
